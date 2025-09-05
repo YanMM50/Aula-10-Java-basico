@@ -10,6 +10,7 @@ public enum Sexo {
         this.texto = texto;
     }
 
+
     public String getTexto() {
         return texto;
     }
