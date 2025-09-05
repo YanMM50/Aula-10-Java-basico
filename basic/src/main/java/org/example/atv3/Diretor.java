@@ -1,26 +1,32 @@
 package org.example.atv3;
 
-public class Diretor extends Funcionario{
+import java.time.LocalDate;
 
-    private final double PREMIO = 0.2;
+public class Diretor extends CargoDeConfianca implements Contratacao {
+    private static final double PREMIO = 0.1;
 
-    public Diretor(String dataNascimento, String nome, double salarioBase, Setor setor, Sexo sexo) {
-        super(dataNascimento, nome, salarioBase, setor, sexo);
+    public Diretor(String nome, String cpf, String rg, Sexo genero, double salarioBase,
+                   LocalDate dataNascimento, LocalDate dataAdmissao) {
+        super(nome, cpf, rg, genero, salarioBase, dataNascimento, dataAdmissao, Bonificacao.DIRETOR);
     }
 
     @Override
     public double getSalarioFinal() {
-        return salarioBase + (salarioBase * PREMIO);
+        return super.getSalarioFinal() + (salarioBase * PREMIO);
+    }
+
+    @Override
+    public void admitir(Funcionario funcionario) {
+        System.out.println("Admitindo funcionário: " + funcionario.nome);
+    }
+
+    @Override
+    public void demitir(Funcionario funcionario) {
+        System.out.println("Demitindo funcionário: " + funcionario.nome);
     }
 
     @Override
     public String toString() {
-        return "Diretor{" +
-                "dataNascimento='" + dataNascimento + '\'' +
-                ", nome='" + nome + '\'' +
-                ", salarioBase=" + salarioBase +
-                ", setor=" + setor +
-                ", sexo=" + sexo +
-                '}';
+        return super.toString() + " Diretor{}";
     }
 }

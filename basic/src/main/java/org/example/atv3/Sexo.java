@@ -1,7 +1,16 @@
 package org.example.atv3;
 
 public enum Sexo {
-    MASCULINO,
-    FEMININO;
+    MASCULINO("Masculino"),
+    FEMININO("Feminino");
 
+    private final String texto;
+
+    Sexo(String texto) {
+        this.texto = texto;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
 }

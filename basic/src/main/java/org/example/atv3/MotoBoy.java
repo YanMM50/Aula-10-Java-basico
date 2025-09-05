@@ -1,29 +1,23 @@
 package org.example.atv3;
 
-public class MotoBoy extends Funcionario{
+import java.time.LocalDate;
 
-    private String carteiraDeHabilitacao;
+public class MotoBoy extends Funcionario {
+    private String placaDaMoto;
 
-    public MotoBoy(String dataNascimento, String nome, double salarioBase, Setor setor, Sexo sexo, String carteiraDeHabilitacao) {
-        super(dataNascimento, nome, salarioBase, setor, sexo);
-        this.carteiraDeHabilitacao = carteiraDeHabilitacao;
-    }
-
-    @Override
-    public String toString() {
-        return "MotoBoy{" +
-                "carteiraDeHabilitacao='" + carteiraDeHabilitacao + '\'' +
-                ", dataNascimento='" + dataNascimento + '\'' +
-                ", nome='" + nome + '\'' +
-                ", salarioBase=" + salarioBase +
-                ", setor=" + setor +
-                ", sexo=" + sexo +
-                '}';
+    public MotoBoy(String nome, String cpf, String rg, Sexo genero, double salarioBase,
+                   LocalDate dataNascimento, LocalDate dataAdmissao, String placaDaMoto) {
+        super(nome, cpf, rg, genero, salarioBase, dataNascimento, dataAdmissao);
+        this.placaDaMoto = placaDaMoto;
     }
 
     @Override
     public double getSalarioFinal() {
-        return salarioBase;
+        return salarioBase; // não tem bonificação
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + " MotoBoy{placaDaMoto='" + placaDaMoto + "'}";
+    }
 }
